@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="com.maxmind.geoip2:geoip2:2.9.0" type="repository">
+    <properties maven-id="com.maxmind.geoip2:geoip2:2.9.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/geoip2-2.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/maxmind-db-1.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.8.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.8.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpclient-4.5.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpcore-4.4.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
