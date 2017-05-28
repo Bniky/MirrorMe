@@ -59,11 +59,11 @@ public class TFLStatus {
                 }
 
                 System.out.println(getTFL());
-
             }
+
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("Error TFL API");
-    }
+        }
     }
 }

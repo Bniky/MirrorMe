@@ -110,6 +110,7 @@ public class WeatherToday {
             }
         }catch (Exception e){
             e.printStackTrace();
+
         }
     }
 
