@@ -97,13 +97,18 @@ public class WeatherToday {
 
     //Reads files in the json and get the city name
     public void getPersonLocationId(){
+        LocateMyCity myCityD = new LocateMyCity();
+
+        System.out.print(myCityD.getmyCityLocation() + " " + myCityD.getCountry());
+
+
         Gson gson = new Gson();
         try{
             JsonReader reader = new JsonReader(new FileReader("C:\\Users\\Nicholas\\IdeaProjects\\MirrorMe\\src\\citylist.json"));
             JsonFile page = gson.fromJson(reader, JsonFile.class);
 
-            for (Location location : page.cities) {/////////VVVVVVVVV Change!!!
-                if(location.name.equalsIgnoreCase("London") && location.country.equalsIgnoreCase("GB")) {
+            for (Location location : page.cities) {// Location of city and country Changed!!!
+                if(location.name.equalsIgnoreCase(myCityD.getmyCityLocation()) && location.country.equalsIgnoreCase(myCityD.getCountry())) {
                     System.out.println("    " + location.id);
                     setLocationId(Long.parseLong(location.id));
                 }
