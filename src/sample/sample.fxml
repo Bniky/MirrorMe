@@ -26,14 +26,14 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets left="10.0" top="10.0" />
+                        <Insets left="5.0" top="10.0" />
                     </VBox.margin>
                 </Label>
-            <ScrollPane fx:id="sp" prefHeight="200.0" prefWidth="200.0">
+            <ScrollPane fx:id="sp" prefWidth="640.0">
                <content>
                   <AnchorPane fx:id="ap" prefHeight="200.0" prefWidth="619.0">
                      <children>
-                        <Label fx:id="lblN" text="Label" />
+                        <Label fx:id="lblN" text="Label" AnchorPane.leftAnchor="5.0" />
                      </children>
                   </AnchorPane>
                </content>
@@ -51,7 +51,7 @@
                                 <Image url="@../weatherIcons/1.png" />
                             </image>
                         </ImageView>
-                      <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="50.0" prefWidth="286.0" text="London temp clear sky" textFill="WHITE" wrapText="true">
+                      <Label fx:id="loc" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="50.0" prefWidth="286.0" text="London temp clear sky" textFill="WHITE" wrapText="true">
                           <font>
                               <Font name="System Bold" size="18.0" />
                           </font>
@@ -62,7 +62,7 @@
                         <Insets />
                      </opaqueInsets>
                       </Label>
-                  <Label fx:id="lblTime" alignment="CENTER" layoutX="10.0" layoutY="149.0" prefHeight="47.0" prefWidth="115.0" text="18:50" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="lblTime" alignment="TOP_LEFT" layoutX="10.0" layoutY="149.0" prefHeight="47.0" prefWidth="87.0" text="18:50" textFill="WHITE">
                      <font>
                         <Font size="32.0" />
                      </font>

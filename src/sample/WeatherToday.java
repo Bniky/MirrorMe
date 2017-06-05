@@ -29,16 +29,21 @@ public class WeatherToday {
     private String cityN;
     private String description;
     private float celsius;
+    private String cels;
 
-    public float getCelsius(){
-        return celsius;
+    public String getCels(){
+        return cels + "°C";
     }
 
     public void setCelsius(float fahrenheit){
         if(fahrenheit == 32.0f){
             celsius = 0.0f;
+            cels = Float.toString(celsius);
+
         }else{
-            celsius = (fahrenheit - 32) * 9/5;
+            celsius = (fahrenheit - 32) * 5/9;
+            cels = Float.toString(celsius);
+            cels = cels.substring(0, 2);
         }
     }
 
@@ -146,50 +151,11 @@ public class WeatherToday {
 
                 if(cwd.hasMainInstance()){
                     setCelsius(cwd.getMainInstance().getMaxTemperature());
-                    System.out.println(getCelsius() + "°C");
+                    System.out.println(getCels());
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
-
-       /* BufferedReader br;
-        BufferedWriter bw = null;
-        FileWriter fw = null;
-
-        String filePath = "C:\\Users\\Nicholas\\IdeaProjects\\MirrorMe\\src\\sample\\WeatherInfo.txt";
-
-        try {
-
-            File f = new File(filePath);
-            fw = new FileWriter(f.getAbsoluteFile(), true);
-            bw = new BufferedWriter(fw);
-
-            //empty file if text is there
-            PrintWriter writer = new PrintWriter(f);
-            writer.print("");
-
-            String thisLine = cwd.getRawResponse();
-
-            // true = append file
-                System.out.println(thisLine);
-                bw.write(thisLine);
-                bw.close();
-
-            Gson g = new Gson();
-            br = new BufferedReader(new FileReader(f));
-
-            Data dataIn = g.fromJson(br, Data.class);
-
-            if(dataIn != null) {
-                for (Weather we : dataIn.getWeather()) {
-                    System.out.print(we.getIcon() + " " + we.getDescription());
-                }
-            }
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
 
         }
     }

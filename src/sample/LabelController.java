@@ -1,5 +1,6 @@
 package sample;
 
+import WeatherGs.Weather;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -30,7 +31,8 @@ public class LabelController {
     @FXML
     private Label lblTime;
 
-
+    @FXML
+    private Label loc;
 
 
     static String i;
@@ -38,6 +40,7 @@ public class LabelController {
     public void getAndSetData(){
         setTime();
         setNews();
+        setLocation();
     }
 
     public void setTime(){
@@ -65,6 +68,18 @@ public class LabelController {
 
         }catch(Exception e){
             lblN.setText("Error News");
+        }
+    }
+
+    public void setLocation(){
+        WeatherToday wT = new WeatherToday();
+
+        try {
+
+            loc.setText(wT.getCityN() + ": " + wT.getCels() + " " + wT.getDescription());
+
+        }catch(Exception e){
+            loc.setText("Error News");
         }
     }
 
