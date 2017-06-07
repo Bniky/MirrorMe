@@ -13,20 +13,36 @@ import java.util.List;
 public class MyMessage {
 
 
-    public static void main(String[] args) throws Exception {
+    private String message;
 
-        String json1 = News.readUrl("http://beniky.co.uk/MirrorMeExample.html");
+    public String getMessage(){
+        return message;
+    }
 
-        Gson gson = new Gson();
-        Text page = gson.fromJson(json1, Text.class);
+    public void setMessage(String mess){
 
-        //System.out.println(page.source.toUpperCase().replace('-', ' '));
+        this.message = mess;
+    }
 
-        for (Message itextMessage : page.getMessages()) {
-            System.out.println("    " + itextMessage.getName());
-            System.out.println("    " + itextMessage.getMessage());
+    public MyMessage() {
 
+        try {
+            String json1 = News.readUrl("http://beniky.co.uk/MirrorMeExample.html");
+
+            Gson gson = new Gson();
+            Text page = gson.fromJson(json1, Text.class);
+
+            //System.out.println(page.source.toUpperCase().replace('-', ' '));
+
+            for (Message itextMessage : page.getMessages()) {
+                System.out.println("    " + itextMessage.getName());
+                this.message = itextMessage.getMessage();
+
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("ii");
         }
-
     }
 }

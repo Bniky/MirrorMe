@@ -13,27 +13,24 @@
 
 <BorderPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LabelController">
     <bottom>
-        <VBox prefHeight="283.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="271.0" prefWidth="640.0" BorderPane.alignment="CENTER">
             <children>
                 <Region VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></Region>
-                <Label fx:id="BBCL" disable="true" text="BBC News" textFill="RED" underline="true" wrapText="true" VBox.vgrow="ALWAYS">
+                <Label fx:id="BBCL" disable="true" text="BBC News" textFill="RED" underline="true" VBox.vgrow="ALWAYS">
                     <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Arial Black" size="20.0" />
                     </font>
                     <VBox.margin>
                         <Insets left="5.0" top="10.0" />
                     </VBox.margin>
                 </Label>
-            <TextArea fx:id="lblN" prefHeight="286.0" prefWidth="640.0" wrapText="true">
+            <TextArea fx:id="lblN" editable="false" prefHeight="286.0" prefWidth="640.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
-               <padding>
-                  <Insets bottom="50.0" />
-               </padding>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -42,18 +39,18 @@
         </VBox>
     </bottom>
     <center>
-        <HBox prefHeight="304.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+        <HBox prefHeight="212.0" prefWidth="640.0" BorderPane.alignment="CENTER">
             <children>
                 <VBox prefHeight="180.0" prefWidth="323.0">
                     <children>
-                        <ImageView fx:id="weatherIconId" fitHeight="80.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="weatherIconId" fitHeight="94.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../weatherIcons/09n.png" />
                             </image>
                         </ImageView>
                       <Label fx:id="loc" alignment="TOP_LEFT" contentDisplay="CENTER" text="clear sky temp" textFill="WHITE" wrapText="true">
                           <font>
-                              <Font name="Arial Bold" size="15.0" />
+                              <Font name="Arial Bold" size="18.0" />
                           </font>
                      <VBox.margin>
                         <Insets left="5.0" />
@@ -74,17 +71,17 @@
                   </Label>
                     </children>
                 </VBox>
-            <VBox prefHeight="218.0" prefWidth="290.0">
+            <VBox prefHeight="188.0" prefWidth="309.0">
                <children>
-                        <Label fx:id="TFLline" alignment="TOP_LEFT" wrapText="true">
+                        <Label fx:id="TFLline" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="21.0" prefWidth="315.0" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
                             <font>
-                                <Font name="Arial" size="15.0" />
+                                <Font name="Arial" size="18.0" />
                             </font>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                         </Label>
-                  <Label fx:id="trainUpdate" textFill="#334eff" />
+                  <Label fx:id="trainUpdate" alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="328.0" textFill="#334eff" />
                </children>
                <HBox.margin>
                   <Insets />
@@ -101,16 +98,9 @@
     </center>
     <top>
         <VBox BorderPane.alignment="CENTER">
-            <children>
-                <TextArea maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="545.0" text="Message" VBox.vgrow="ALWAYS">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                    <VBox.margin>
-                        <Insets bottom="5.0" />
-                    </VBox.margin>
-                </TextArea>
-            </children>
+         <children>
+            <Label />
+         </children>
         </VBox>
     </top>
 </BorderPane>

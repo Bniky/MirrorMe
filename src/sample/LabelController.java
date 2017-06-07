@@ -101,14 +101,16 @@ public class LabelController {
                 news += n + "\n";
             }
 
-
-
+            //Scroll bar in the textArea
             ScrollBar scrollBarv = (ScrollBar)lblN.lookup(".scroll-bar:vertical");
+            //Hide scrollbar
             scrollBarv.setDisable(true);
             lblN.setWrapText(true);
-            lblN.appendText("BBC NEWS" + "\n");
-            lblN.setText(news);
 
+            //New information.
+            lblN.setText(news);
+            lblN.appendText("\n"+ "\n"+ "\n"+ "\n");
+            //Automatic scrolling function
             slowScrollToBottom(scrollBarv);
         }catch(Exception e){
             lblN.setText("Error News");
@@ -116,10 +118,10 @@ public class LabelController {
     }
 
     static void slowScrollToBottom(ScrollBar scrollPane) {
-        scrollPane.setValue(-0.2);
+        scrollPane.setValue(1.5);
         Animation animation = new Timeline(
                 new KeyFrame(Duration.seconds(7),
-                        new KeyValue(scrollPane.valueProperty(), 1)));
+                        new KeyValue(scrollPane.valueProperty(), 0)));
         animation.play();
     }
 
@@ -140,36 +142,43 @@ public class LabelController {
     public void setTrainStatus(){
 
         TFLStatus tS = new TFLStatus();
+        LocateMyCity lo = new LocateMyCity();
+
         int sizeOfService = tS.getTFL().size();
         int countGS = 0;
 
-        try {
+        if(lo.getmyCityLocation().equalsIgnoreCase("London")) {
 
-            for (Map.Entry<String, String> entry : tS.getTFL().entrySet()) {
-                //Line NOT equal to Good Service - Delay lines
-                if(!entry.getValue().equalsIgnoreCase("Good Service")){
-                    TFLline.setFont(new Font("Arial", 18));
-                    TFLline.setStyle("-fx-font-weight: bold");
-                    TFLline.setTextFill(Color.web("#ff270f"));
-                    TFLline.setText("Services delays:");
+            try {
 
-                    trainUpdate.setText(entry.getKey() + ": " + entry.getValue());
-                    System.out.println("Name of Service: " + entry.getKey() + " " + entry.getValue() + "\n");
-                    ++countGS;
+                for (Map.Entry<String, String> entry : tS.getTFL().entrySet()) {
+                    //Line NOT equal to Good Service - Delay lines
+                    if (!entry.getValue().equalsIgnoreCase("Good Service")) {
+                        TFLline.setFont(new Font("Arial", 18));
+                        TFLline.setStyle("-fx-font-weight: bold");
+                        TFLline.setTextFill(Color.web("#ff270f"));
+                        TFLline.setText("Services delays:");
 
+                        trainUpdate.setText(entry.getKey() + ": " + entry.getValue());
+                        System.out.println("Name of Service: " + entry.getKey() + " " + entry.getValue() + "\n");
+                        ++countGS;
+
+                    }
                 }
-            }
 
-            if(countGS == 0 ){
-                TFLline.setFont(new Font("Arial", 15));
-                TFLline.setStyle("-fx-font-weight: bold");
-                TFLline.setTextFill(Color.web("#25d039"));
-                TFLline.setText("Good Services: Underground & DLR");
+                if (countGS == 0) {
+                    TFLline.setFont(new Font("Arial", 17));
+                    TFLline.setStyle("-fx-font-weight: bold");
+                    TFLline.setTextFill(Color.web("#25d039"));
+                    TFLline.setText("Good Services: Underground & DLR");
+                }
+                System.out.println(countGS);
+                //tS.getTFL().forEach((k,v)-> System.out.println(v));
+            } catch (Exception e) {
+                loc.setText("Error News");
             }
-            System.out.println(countGS);
-            //tS.getTFL().forEach((k,v)-> System.out.println(v));
-            } catch(Exception e){
-            loc.setText("Error News");
+        }else{
+            TFLline.setText(lo.getmyCityLocation());
         }
     }
 
