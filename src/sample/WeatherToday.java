@@ -67,10 +67,7 @@ public class WeatherToday {
         return icon;
     }
 
-    public void setIcon(String s){
-        icon = s;
-    }
-
+    public void setIcon(String s) {this.icon = s;}
 
     public Long getLocationId (){
         return locationId;

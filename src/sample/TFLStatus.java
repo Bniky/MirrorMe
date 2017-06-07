@@ -17,10 +17,10 @@ import static sample.News.readUrl;
  */
 public class TFLStatus {
 
-    private static Map<String, String> TFL = new HashMap<String, String>();
+    private Map<String, String> TFL = new HashMap<String, String>();
 
     //Check if values equals empty String
-    public static void setTFL(String key, String val){
+    public void setTFL(String key, String val){
         if(key == null || key.equals("") || val == null || val.equals("")){
             getTFL().put("", "Error");
         }else{
@@ -28,12 +28,12 @@ public class TFLStatus {
         }
     }
 
-    public static Map<String, String> getTFL(){
+    public Map<String, String> getTFL(){
 
         return TFL;
     }
 
-    public static void main(String [] args){
+    public TFLStatus(){
 
         //Read json array online url
         try {
@@ -49,16 +49,16 @@ public class TFLStatus {
                 String trainName;
                 String lineStatus;
 
-                System.out.println("Train Lin " + eachService.getName());
+                //System.out.println("Train Lin " + eachService.getName());
                 trainName = eachService.getName();
 
                 for (LineStatus status : eachService.getLineStatuses()) {
-                    System.out.println("Line status " + status.getStatusSeverityDescription());
+                    //System.out.println("Line status " + status.getStatusSeverityDescription());
                     lineStatus = status.getStatusSeverityDescription();
                     setTFL(trainName, lineStatus);
                 }
 
-                System.out.println(getTFL());
+                //System.out.println(getTFL());
             }
 
         }catch (Exception e){

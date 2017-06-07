@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -31,9 +32,6 @@ public class Main extends Application implements Runnable{
 
     static String i;
 
-    @FXML
-    private Label lblN;
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         WeatherToday weather = new WeatherToday();
@@ -47,7 +45,7 @@ public class Main extends Application implements Runnable{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
 
-        Scene scene = new Scene(root, 575, 400);
+        Scene scene = new Scene(root, 650, 400);
 
         primaryStage.setScene(scene);
 
