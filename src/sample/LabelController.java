@@ -62,6 +62,7 @@ public class LabelController {
     private ImageView weatherIconId;
 
     static String i;
+    static int num;
 
     public void getAndSetData(){
         setTime();
@@ -98,7 +99,7 @@ public class LabelController {
             String news = "";
 
             for(String n: new News().getHeadLine()){
-                news += n + "\n";
+                news += "- " + n + "\n";
             }
 
             //Scroll bar in the textArea
@@ -154,12 +155,15 @@ public class LabelController {
                 for (Map.Entry<String, String> entry : tS.getTFL().entrySet()) {
                     //Line NOT equal to Good Service - Delay lines
                     if (!entry.getValue().equalsIgnoreCase("Good Service")) {
-                        TFLline.setFont(new Font("Arial", 18));
+                        TFLline.setFont(new Font("Arial", 30));
                         TFLline.setStyle("-fx-font-weight: bold");
                         TFLline.setTextFill(Color.web("#ff270f"));
                         TFLline.setText("Services delays:");
 
-                        trainUpdate.setText(entry.getKey() + ": " + entry.getValue());
+                        trainUpdate.setFont(new Font("Arial", 32));
+                        trainUpdate.setStyle("-fx-font-weight: bold");
+                        trainUpdate.setTextFill(Color.web("#ffffff"));
+                        trainUpdate.setText(entry.getKey() + ": " + entry.getValue() + "\n");
                         System.out.println("Name of Service: " + entry.getKey() + " " + entry.getValue() + "\n");
                         ++countGS;
 
@@ -167,7 +171,7 @@ public class LabelController {
                 }
 
                 if (countGS == 0) {
-                    TFLline.setFont(new Font("Arial", 17));
+                    TFLline.setFont(new Font("Arial", 35));
                     TFLline.setStyle("-fx-font-weight: bold");
                     TFLline.setTextFill(Color.web("#25d039"));
                     TFLline.setText("Good Services: Underground & DLR");
@@ -187,7 +191,7 @@ public class LabelController {
     public void initialize() {
 
         Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(10000),
+                Duration.millis(8000),
                 ae -> getAndSetData()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();

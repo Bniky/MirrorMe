@@ -106,7 +106,7 @@ public class WeatherToday {
 
         Gson gson = new Gson();
         try{
-            JsonReader reader = new JsonReader(new FileReader("C:\\Users\\Nicholas\\IdeaProjects\\MirrorMe\\src\\citylist.json"));
+            JsonReader reader = new JsonReader(new FileReader("src\\citylist.json"));
             JsonFile page = gson.fromJson(reader, JsonFile.class);
 
             for (Location location : page.cities) {// Location of city and country Changed!!!
@@ -143,7 +143,7 @@ public class WeatherToday {
 
                 if (cwd.hasWeatherInstance()) {
                     setIcon(cwd.getWeatherInstance(0).getWeatherIconName());
-                    setDecription(cwd.getWeatherInstance(0).getWeatherDescription());
+                    setDecription(cwd.getWeatherInstance(0).getWeatherName());
                 }
 
                 if(cwd.hasMainInstance()){

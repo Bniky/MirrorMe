@@ -11,25 +11,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LabelController">
+<BorderPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LabelController">
     <bottom>
-        <VBox prefHeight="271.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="273.0" prefWidth="640.0" BorderPane.alignment="CENTER">
             <children>
-                <Region VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin></Region>
-                <Label fx:id="BBCL" disable="true" text="BBC News" textFill="RED" underline="true" VBox.vgrow="ALWAYS">
+                <Label fx:id="BBCL" disable="true" text="BBC News" textFill="RED" underline="true">
                     <font>
-                        <Font name="Arial Black" size="20.0" />
+                        <Font name="Arial Black" size="29.0" />
                     </font>
                     <VBox.margin>
                         <Insets left="5.0" top="10.0" />
                     </VBox.margin>
                 </Label>
-            <TextArea fx:id="lblN" editable="false" prefHeight="286.0" prefWidth="640.0" wrapText="true">
+            <TextArea fx:id="lblN" editable="false" maxHeight="550.0" minHeight="240.0" prefHeight="260.0" prefWidth="779.0" wrapText="true">
                <font>
-                  <Font size="20.0" />
+                  <Font size="31.0" />
                </font>
                <VBox.margin>
                   <Insets />
@@ -39,18 +35,18 @@
         </VBox>
     </bottom>
     <center>
-        <HBox prefHeight="212.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+        <HBox layoutY="10.0" prefHeight="211.0" BorderPane.alignment="CENTER">
             <children>
-                <VBox prefHeight="180.0" prefWidth="323.0">
+                <VBox prefHeight="276.0" prefWidth="348.0">
                     <children>
-                        <ImageView fx:id="weatherIconId" fitHeight="94.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="weatherIconId" fitHeight="147.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../weatherIcons/09n.png" />
                             </image>
                         </ImageView>
-                      <Label fx:id="loc" alignment="TOP_LEFT" contentDisplay="CENTER" text="clear sky temp" textFill="WHITE" wrapText="true">
+                      <Label fx:id="loc" alignment="TOP_LEFT" contentDisplay="CENTER" text="Clear temp" textFill="WHITE" wrapText="true">
                           <font>
-                              <Font name="Arial Bold" size="18.0" />
+                              <Font name="Arial Bold" size="52.0" />
                           </font>
                      <VBox.margin>
                         <Insets left="5.0" />
@@ -59,29 +55,37 @@
                         <Insets />
                      </opaqueInsets>
                       </Label>
-                  <Label fx:id="lblTime" alignment="TOP_LEFT" contentDisplay="TOP" minHeight="-Infinity" prefHeight="38.0" prefWidth="76.0" text="18:50" textFill="WHITE">
+                  <Label fx:id="lblTime" alignment="BOTTOM_LEFT" contentDisplay="TOP" minHeight="45.0" text="18:50" textFill="WHITE">
                      <font>
-                        <Font size="32.0" />
+                        <Font size="41.0" />
                      </font>
                   </Label>
-                  <Label fx:id="monthDay" alignment="TOP_LEFT" contentDisplay="TOP" minHeight="-Infinity" prefHeight="18.0" prefWidth="87.0" text="Date" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <Label fx:id="monthDay" alignment="TOP_LEFT" contentDisplay="TOP" minHeight="27.0" text="Date" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="5.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
                   </Label>
                     </children>
                 </VBox>
-            <VBox prefHeight="188.0" prefWidth="309.0">
+            <Region prefHeight="276.0" prefWidth="83.0" />
+            <VBox prefHeight="276.0" prefWidth="641.0">
                <children>
-                        <Label fx:id="TFLline" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="21.0" prefWidth="315.0" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+                        <Label fx:id="TFLline" alignment="TOP_RIGHT" contentDisplay="RIGHT" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
                             <font>
-                                <Font name="Arial" size="18.0" />
+                                <Font name="Arial" size="35.0" />
                             </font>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                         </Label>
-                  <Label fx:id="trainUpdate" alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="328.0" textFill="#334eff" />
+                  <Label fx:id="trainUpdate" alignment="TOP_LEFT" contentDisplay="RIGHT" prefHeight="236.0" prefWidth="580.0" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
                </children>
                <HBox.margin>
                   <Insets />
@@ -97,10 +101,6 @@
         </HBox>
     </center>
     <top>
-        <VBox BorderPane.alignment="CENTER">
-         <children>
-            <Label />
-         </children>
-        </VBox>
+        <VBox BorderPane.alignment="CENTER" />
     </top>
 </BorderPane>
