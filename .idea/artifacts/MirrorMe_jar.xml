@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="MirrorMe:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MirrorMe_jar</output-path>
+    <root id="archive" name="MirrorMe.jar">
+      <element id="module-output" name="MirrorMe" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/sphinx4-0.1alpha-bin/sphinx4-0.1alpha/lib/jsapi.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/sphinx4-0.1alpha-bin/sphinx4-0.1alpha/lib/sphinx4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/sphinx4-0.1alpha-bin/sphinx4-0.1alpha/lib/TIDIGITS_8gau_13dCep_16k_40mel_130Hz_6800Hz.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/sphinx4-0.1alpha-bin/sphinx4-0.1alpha/lib/WSJ_8gau_13dCep_16k_40mel_130Hz_6800Hz.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/owm-japis-2.5.0.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/geoip2-2.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/maxmind-db-1.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-databind-2.8.8.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-annotations-2.8.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-core-2.8.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/httpclient-4.5.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/httpcore-4.4.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-logging-1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-codec-1.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/owm-japis-2.5.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/gson-2.8.0.jar" path-in-jar="/" />
+      <element id="library" level="project" name="weatherIcons" />
+      <element id="file-copy" path="$PROJECT_DIR$/res/citylist.json" />
+      <element id="file-copy" path="$PROJECT_DIR$/res/GeoLite2-City.mmdb" />
+    </root>
+  </artifact>
+</component>

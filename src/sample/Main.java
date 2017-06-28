@@ -34,13 +34,8 @@ public class Main extends Application implements Runnable{
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        WeatherToday weather = new WeatherToday();
-
 
         String css = this.getClass().getResource("myStyle.css").toExternalForm();
-
-        String w = weather.getDescription();
-        String city = weather.getCityN();
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
@@ -50,30 +45,16 @@ public class Main extends Application implements Runnable{
         primaryStage.setScene(scene);
 
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setFullScreen(true);
+        //primaryStage.setResizable(false);
+        primaryStage.setMaximized(true);
 
         scene.getStylesheets().add(css);
         primaryStage.show();
 
-
-        /*StackPane pane = new StackPane();
-
-
-        Label wLabel = new Label(city + " " + w);
-        wLabel.setWrapText(true);
-        wLabel.setTranslateY(100);
-        pane.getChildren().add(wLabel);
-
-        Scene scene = new Scene(pane, 375, 200);
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
     }
 
 
     public static void main(String[] args) {
-        LocalTime watch = LocalTime.now();
-        DateTimeFormatter shortTime = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-        System.out.println(watch.format(shortTime));
         launch(args);
 
     }

@@ -1,0 +1,10 @@
+# Turn on Raspberry Pi at 7:00, turn it off at 7:30
+# Turn on again at 21:00, turn it off at 21:30
+# Repeat above everyday
+
+BEGIN	2015-08-01 07:00:00	# starts at 7:00
+END	2025-07-31 23:59:59
+ON	H5		# keep ON state for 7 HOURS (until 12:00)
+OFF	H6		# keep OFF state for 6 hours (until 18:00)
+ON	H6		# keep ON state for  6 m (until 00:00)
+OFF	H7		# keep OFF state for 7 hours (until 7:00 next day)

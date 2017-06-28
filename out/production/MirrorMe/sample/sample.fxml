@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LabelController">
+<BorderPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LabelController">
     <bottom>
         <VBox prefHeight="273.0" prefWidth="640.0" BorderPane.alignment="CENTER">
             <children>
@@ -23,9 +23,9 @@
                         <Insets left="5.0" top="10.0" />
                     </VBox.margin>
                 </Label>
-            <TextArea fx:id="lblN" editable="false" maxHeight="550.0" minHeight="240.0" prefHeight="260.0" prefWidth="779.0" wrapText="true">
+            <TextArea fx:id="lblN" editable="false" maxHeight="550.0" minHeight="240.0" prefHeight="240.0" prefWidth="673.0" wrapText="true">
                <font>
-                  <Font size="31.0" />
+                  <Font size="27.0" />
                </font>
                <VBox.margin>
                   <Insets />
@@ -39,14 +39,14 @@
             <children>
                 <VBox prefHeight="276.0" prefWidth="348.0">
                     <children>
-                        <ImageView fx:id="weatherIconId" fitHeight="147.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="weatherIconId" fitHeight="135.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../weatherIcons/09n.png" />
+                                <Image url="@../../res/weatherIcons/8.png" />
                             </image>
                         </ImageView>
                       <Label fx:id="loc" alignment="TOP_LEFT" contentDisplay="CENTER" text="Clear temp" textFill="WHITE" wrapText="true">
                           <font>
-                              <Font name="Arial Bold" size="52.0" />
+                              <Font name="Arial Bold" size="37.0" />
                           </font>
                      <VBox.margin>
                         <Insets left="5.0" />
@@ -73,7 +73,7 @@
             <Region prefHeight="276.0" prefWidth="83.0" />
             <VBox prefHeight="276.0" prefWidth="641.0">
                <children>
-                        <Label fx:id="TFLline" alignment="TOP_RIGHT" contentDisplay="RIGHT" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+                        <Label fx:id="TFLline" alignment="TOP_LEFT" contentDisplay="RIGHT" prefHeight="41.0" prefWidth="496.0" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
                             <font>
                                 <Font name="Arial" size="35.0" />
                             </font>
@@ -81,7 +81,7 @@
                         <Insets />
                      </VBox.margin>
                         </Label>
-                  <Label fx:id="trainUpdate" alignment="TOP_LEFT" contentDisplay="RIGHT" prefHeight="236.0" prefWidth="580.0" textFill="WHITE" wrapText="true">
+                  <Label fx:id="trainUpdate" alignment="TOP_LEFT" contentDisplay="RIGHT" prefHeight="225.0" prefWidth="513.0" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="35.0" />
                      </font>

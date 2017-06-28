@@ -1,23 +1,16 @@
 package sample;
 
-import WeatherGs.Data;
-import WeatherGs.Weather;
-import com.fasterxml.jackson.databind.JavaType;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
-import com.google.gson.Gson;
+
 import net.aksingh.owmjapis.CurrentWeather;
-import net.aksingh.owmjapis.DailyForecast;
 import net.aksingh.owmjapis.OpenWeatherMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-
-import static sample.News.readUrl;
 
 /**
  * Created by Nicholas on 16/05/2017.
@@ -106,7 +99,26 @@ public class WeatherToday {
 
         Gson gson = new Gson();
         try{
-            JsonReader reader = new JsonReader(new FileReader("src\\citylist.json"));
+            Path appDirectory = Paths.get(System.getProperty("user.home"), ".MirrorMe");
+            Path databaseFile = appDirectory.resolve("citylist.json");
+
+            if (! Files.exists(databaseFile)) {
+                try {
+                    // create the app directory if it doesn't already exist:
+                    Files.createDirectories(appDirectory);
+
+                    InputStream defaultDatabase = getClass().getClassLoader().getResourceAsStream("citylist.json");
+                    Files.copy(defaultDatabase, databaseFile);
+                } catch (IOException exc) {
+                    // handle exception here, e.g. if application can run without db,
+                    // set flag indicating it must run in non-db mode
+                    // otherwise this is probably a fatal exception, show message and exit...
+                    exc.printStackTrace();
+                }
+            }
+
+            //Path cityFileL = new JarHelper().extractJar(".MirrorMe", "citylist.json");
+            JsonReader reader = new JsonReader(new FileReader(databaseFile.toFile()));
             JsonFile page = gson.fromJson(reader, JsonFile.class);
 
             for (Location location : page.cities) {// Location of city and country Changed!!!

@@ -8,10 +8,12 @@ import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.model.CityResponse;
 import com.maxmind.geoip2.record.City;
 import com.maxmind.geoip2.record.Country;
-import com.maxmind.geoip2.record.Subdivision;
 
 import java.net.*;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class LocateMyCity {
 
@@ -28,10 +30,27 @@ public class LocateMyCity {
     }
 
     public LocateMyCity() {
-        // A File object pointing to your GeoIP2 or GeoLite2 database
-        File database = new File("src\\GeoLite2-City_20170502\\GeoLite2-City.mmdb");
 
         try {
+            Path appDirectory = Paths.get(System.getProperty("user.home"), ".MirrorMe");
+            Path databaseFile = appDirectory.resolve("GeoList2-City.mmdb");
+
+            if (! Files.exists(databaseFile)) {
+                try {
+                    // create the app directory if it doesn't already exist:
+                    Files.createDirectories(appDirectory);
+
+                    InputStream defaultDatabase = getClass().getClassLoader().getResourceAsStream("GeoLite2-City.mmdb");
+                    Files.copy(defaultDatabase, databaseFile);
+                } catch (IOException exc) {
+                    // handle exception here, e.g. if application can run without db,
+                    // set flag indicating it must run in non-db mode
+                    // otherwise this is probably a fatal exception, show message and exit...
+                    exc.printStackTrace();
+                }
+            }
+
+
             URL whatismyip = new URL("http://checkip.amazonaws.com");
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     whatismyip.openStream()));
@@ -41,7 +60,7 @@ public class LocateMyCity {
 
             // This creates the DatabaseReader object, which should be reused across
             // lookups.
-            DatabaseReader reader = new DatabaseReader.Builder(database).build();
+            DatabaseReader reader = new DatabaseReader.Builder(databaseFile.toFile()).build();
 
             InetAddress ipAddress = InetAddress.getByName(ip);
 
@@ -61,7 +80,6 @@ public class LocateMyCity {
 
         }catch (Exception e){
             e.printStackTrace();
-            System.out.println("Tracing IP E");
         }
     }
 }

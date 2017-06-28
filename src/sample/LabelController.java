@@ -1,36 +1,35 @@
 package sample;
 
-import WeatherGs.Weather;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollBar;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
-import jdk.nashorn.internal.ir.WhileNode;
-import sun.plugin.javascript.navig4.Anchor;
 
-import java.io.File;
-import java.text.DateFormat;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 
 /**
  * Created by Nicholas on 01/06/2017.
@@ -61,8 +60,7 @@ public class LabelController {
     @FXML
     private ImageView weatherIconId;
 
-    static String i;
-    static int num;
+    private static String i;
 
     public void getAndSetData(){
         setTime();
@@ -99,7 +97,7 @@ public class LabelController {
             String news = "";
 
             for(String n: new News().getHeadLine()){
-                news += "- " + n + "\n";
+                news += n + "\n";
             }
 
             //Scroll bar in the textArea
@@ -128,16 +126,38 @@ public class LabelController {
 
     public void setLocation(){
         WeatherToday wT = new WeatherToday();
-        File file = new File("src\\weatherIcons\\"+ wT.getIcon() + ".png");
-        Image image = new Image(file.toURI().toString());
+
+        Path appDirectory = Paths.get(System.getProperty("user.home"), ".MirrorMe/weatherIcons");
+        Path databaseFile = appDirectory.resolve(wT.getIcon()+".png");
+
+        if (! Files.exists(databaseFile)) {
+            try {
+                // create the app directory if it doesn't already exist:
+                Files.createDirectories(appDirectory);
+
+                InputStream defaultDatabase = getClass().getClassLoader().getResourceAsStream("weatherIcons/" + wT.getIcon()+".png");
+                Files.copy(defaultDatabase, databaseFile);
+            } catch (IOException exc) {
+                // handle exception here, e.g. if application can run without db,
+                // set flag indicating it must run in non-db mode
+                // otherwise this is probably a fatal exception, show message and exit...
+                exc.printStackTrace();
+            }
+        }
+
+        //File file = new File(databaseFile.toFile().toString());
+        //System.out.println(file.toString() + "---------------------");
+        //Image image = new Image(file.toString());
 
         try {
-            weatherIconId.setImage(image);
+            weatherIconId.setImage(new Image(databaseFile.toUri().toString()));
             loc.setText(wT.getDescription().substring(0, 1).toUpperCase() + wT.getDescription().substring(1) + " " + wT.getCels());
 
         }catch(Exception e){
             loc.setText("Error News");
+            e.printStackTrace();
         }
+
     }
 
     public void setTrainStatus(){
@@ -147,6 +167,8 @@ public class LabelController {
 
         int sizeOfService = tS.getTFL().size();
         int countGS = 0;
+
+        String storeDelays = "";
 
         if(lo.getmyCityLocation().equalsIgnoreCase("London")) {
 
@@ -160,10 +182,8 @@ public class LabelController {
                         TFLline.setTextFill(Color.web("#ff270f"));
                         TFLline.setText("Services delays:");
 
-                        trainUpdate.setFont(new Font("Arial", 32));
-                        trainUpdate.setStyle("-fx-font-weight: bold");
-                        trainUpdate.setTextFill(Color.web("#ffffff"));
-                        trainUpdate.setText(entry.getKey() + ": " + entry.getValue() + "\n");
+                        storeDelays += entry.getKey() + ": " + entry.getValue() + "\n";
+
                         System.out.println("Name of Service: " + entry.getKey() + " " + entry.getValue() + "\n");
                         ++countGS;
 
@@ -181,7 +201,14 @@ public class LabelController {
             } catch (Exception e) {
                 loc.setText("Error News");
             }
+
+            trainUpdate.setFont(new Font("Arial", 27));
+            trainUpdate.setStyle("-fx-font-weight: bold");
+            trainUpdate.setTextFill(Color.web("#ffffff"));
+            trainUpdate.setText(storeDelays.toString());
+
         }else{
+            //Show city name!
             TFLline.setText(lo.getmyCityLocation());
         }
     }
@@ -196,9 +223,5 @@ public class LabelController {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
-
-
-    //   getAndSetTheCurrentTime();
-//       lblN.textProperty().bind(i);
     }
 }
